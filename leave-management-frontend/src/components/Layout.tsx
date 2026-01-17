@@ -4,22 +4,21 @@ import Navbar from './Navbar';
 
 /**
  * Main layout component that wraps all pages
- * Contains sidebar, navbar, and main content area
+ * Dark sidebar + white navbar + subtle background for content area
  */
 const Layout = () => {
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar - fixed width */}
+    <div className="flex h-screen bg-slate-50">
+      {/* Sidebar - dark theme for contrast */}
       <Sidebar />
       
       {/* Main content area */}
       <div className="flex flex-col flex-1 overflow-hidden">
-        {/* Top navbar */}
+        {/* Top navbar - clean white */}
         <Navbar />
         
-        {/* Page content */} 
-        {/*  Outlet renders the matched child route component */}
-        <main className="flex-1 overflow-y-auto p-6">
+        {/* Page content - increased padding for breathing room */}
+        <main className="flex-1 overflow-y-auto p-8">
           <Outlet />
         </main>
       </div>
