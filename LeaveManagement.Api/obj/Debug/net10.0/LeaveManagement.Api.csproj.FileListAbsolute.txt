@@ -1,0 +1,66 @@
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\appsettings.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.staticwebassets.endpoints.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.exe
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.deps.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.runtimeconfig.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.dll
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.pdb
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.csproj.AssemblyReference.cache
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.AssemblyInfoInputs.cache
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.AssemblyInfo.cs
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.csproj.CoreCompileInputs.cache
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\scopedcss\bundle\LeaveManagement.Api.styles.css
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveMan.7F5D8431.Up2Date
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.dll
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\refint\LeaveManagement.Api.dll
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.pdb
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.genruntimeconfig.cache
+C:\Users\sruku\Documents\CSharp and dotnet Udemy\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\ref\LeaveManagement.Api.dll
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\appsettings.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.staticwebassets.endpoints.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.exe
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.deps.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.runtimeconfig.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.dll
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\LeaveManagement.Api.pdb
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.csproj.AssemblyReference.cache
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.AssemblyInfoInputs.cache
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.AssemblyInfo.cs
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.csproj.CoreCompileInputs.cache
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\scopedcss\bundle\LeaveManagement.Api.styles.css
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveMan.7F5D8431.Up2Date
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.dll
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\refint\LeaveManagement.Api.dll
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.pdb
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\LeaveManagement.Api.genruntimeconfig.cache
+C:\Users\sruku\Documents\CSharp and dotnet and Redux\Projects\LeaveManagementSystem\LeaveManagement.Api\obj\Debug\net10.0\ref\LeaveManagement.Api.dll
