@@ -14,10 +14,10 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => { // here chilildr
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace />; // see AuthSlice.ts for isAuthenticated state, when logout is clicked, isauthenticated becomes false and it navigates to login page.
   }
 
-  return <>{children}</>;
+  return <>{children}</>; // if authenticated, it returns the child component which is passed as prop.
 };
 
 export default ProtectedRoute;

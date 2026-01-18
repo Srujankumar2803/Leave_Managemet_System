@@ -22,7 +22,7 @@ const Navbar = () => {
    * Clears Redux auth state and redirects to login
    */
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout());  // evethough we have navigate to login below, we still need to clear the auth state in redux by dispatching logout action because ProtectedRoute component checks isAuthenticated from redux state to allow access to protected routes.
     navigate('/login');
   };
 
