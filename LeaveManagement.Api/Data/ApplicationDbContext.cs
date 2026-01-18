@@ -11,6 +11,15 @@ namespace LeaveManagement.Api.Data;
 // contains business logic using repositories, and finally Controllers act as entry points 
 //that receive requests, call services, and return responses.
 
+
+// With EF Core migrations, the database schema is automatically generated and \
+//updated by EF using the connection string, DbContext, and model classes, creating the database,
+// tables, indexes, and constraints without writing SQL manually, whereas in manual 
+//creation the developer must explicitly create the database, schemas, tables, indexes,
+// and constraints in SSMS and keep them in sync with the code, which is error-prone 
+//and hard to maintain; therefore, EF Core migrations are preferred for new applications 
+//while manual creation is mainly used for legacy or DBA-controlled databases.
+
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
