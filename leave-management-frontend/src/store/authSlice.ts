@@ -3,9 +3,10 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 /**
  * User interface - strongly typed user object
+ * Matches backend User model
  */
 export interface User {
-  id: string;
+  id: number;
   name: string;
   email: string;
   role: 'EMPLOYEE' | 'MANAGER' | 'ADMIN';

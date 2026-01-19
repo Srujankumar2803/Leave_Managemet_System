@@ -3,6 +3,8 @@ import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
 import { loginSuccess } from '../store/authSlice';
+import authService from '../api/authService';
+import axios from 'axios';
 
 /**
  * Login page component - standalone (not wrapped by Layout)
@@ -21,7 +23,7 @@ const Login = () => {
 
   /**
    * Handle form submission
-   * Mock login logic - will integrate real API later
+   * Real login integration with backend API
    * Dispatches loginSuccess action to update Redux auth state
    */
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -29,26 +31,43 @@ const Login = () => {
     setError('');
     setIsLoading(true);
 
-    // Mock login delay (simulating API call)
-    setTimeout(() => {
-      // Mock successful login with user data
-      const mockUser = {
-        id: '1',
-        name: 'John Doe',
-        email: email,
-        role: 'EMPLOYEE' as const,
+    try {
+      // Call the real backend API
+      const response = await authService.login({ email, password });
+
+      // Map backend response to Redux User interface
+      const user = {
+        id: response.userId,
+        name: response.name,
+        email: response.email,
+        role: response.role.toUpperCase() as 'EMPLOYEE' | 'MANAGER' | 'ADMIN',
       };
-      
-      const mockToken = 'mock-jwt-token-12345';
 
       // Dispatch to Redux - updates global auth state
-      dispatch(loginSuccess({ user: mockUser, token: mockToken }));
-      
-      setIsLoading(false);
-      
-      // Navigate to dashboard after login
+      dispatch(loginSuccess({ user, token: response.token }));
+
+      // Navigate to dashboard after successful login
       navigate('/');
-    }, 1500);
+    } catch (err) {
+      // Handle errors gracefully
+      if (axios.isAxiosError(err)) {
+        if (err.response) {
+          // Server responded with error
+          const errorMessage = err.response.data?.message || 'Invalid email or password';
+          setError(errorMessage);
+        } else if (err.request) {
+          // Request made but no response (network error)
+          setError('Unable to connect to server. Please check if the backend is running.');
+        } else {
+          // Other errors
+          setError('An unexpected error occurred. Please try again.');
+        }
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
