@@ -13,6 +13,7 @@ import type { LoginRequest, RegisterRequest, AuthResponse } from './types';
  */
 export const login = async (credentials: LoginRequest): Promise<AuthResponse> => {
   const response = await axiosClient.post<AuthResponse>('/auth/login', credentials);
+//   console.log('Login response data:', response);   
   return response.data;
 };
 
