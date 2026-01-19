@@ -7,18 +7,20 @@ import MyLeaves from './pages/MyLeaves';
 import Approvals from './pages/Approvals';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 /**
  * Root App component with routing configuration
- * Login route is standalone (not wrapped by Layout)
+ * Login and Register routes are standalone (not wrapped by Layout)
  * All dashboard routes are protected and use Layout wrapper
  */
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Login route - standalone, no protection needed */}
+        {/* Auth routes - standalone, no protection needed */}
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         
         {/* Protected dashboard routes - require authentication */}
         <Route
