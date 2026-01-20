@@ -14,6 +14,8 @@ import Unauthorized from './pages/Unauthorized';
  * Root App component with routing configuration
  * Login and Register routes are standalone (not wrapped by Layout)
  * All dashboard routes are protected with role-based access control
+ * for example below look into the Employee as the User 
+ *  // // this is role based entry to the user, the element loaded with the help of this file,in order to go to this route, it is handled by the Sidebar.tsx
  */
 function App() {
   return (
@@ -51,7 +53,8 @@ function App() {
         <Route
           path="/apply-leave"
           element={
-            <ProtectedRoute allowedRoles={['EMPLOYEE']}>  // this is role based entry to the user, the element loaded with the help of this file,in order to go to this route, it is handled by the Sidebar.tsx
+            <ProtectedRoute allowedRoles={['EMPLOYEE']}>  
+            
               <Layout />
             </ProtectedRoute>
           }
