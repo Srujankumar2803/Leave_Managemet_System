@@ -21,6 +21,9 @@ public interface IUserRepository
 {
     Task<User?> GetByEmailAsync(string email);
     Task<User> CreateAsync(User user);
+    Task<List<User>> GetAllAsync();
+    Task<User?> GetByIdAsync(int userId);
+    Task UpdateAsync(User user);
 }
 
 /// <summary>
@@ -53,5 +56,30 @@ public class UserRepository : IUserRepository
         _context.Users.Add(user); // database.Users table
         await _context.SaveChangesAsync();
         return user;
+    }
+    
+    /// <summary>
+    /// Get all users from database
+    /// </summary>
+    public async Task<List<User>> GetAllAsync()
+    {
+        return await _context.Users.ToListAsync();
+    }
+    
+    /// <summary>
+    /// Get user by ID
+    /// </summary>
+    public async Task<User?> GetByIdAsync(int userId)
+    {
+        return await _context.Users.FindAsync(userId);
+    }
+    
+    /// <summary>
+    /// Update existing user
+    /// </summary>
+    public async Task UpdateAsync(User user)
+    {
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
     }
 }

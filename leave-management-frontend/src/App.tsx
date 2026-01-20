@@ -6,6 +6,7 @@ import ApplyLeave from './pages/ApplyLeave';
 import MyLeaves from './pages/MyLeaves';
 import Approvals from './pages/Approvals';
 import Admin from './pages/Admin';
+import AdminUsers from './pages/AdminUsers';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Unauthorized from './pages/Unauthorized';
@@ -95,6 +96,18 @@ function App() {
           }
         >
           <Route index element={<Admin />} />
+        </Route>
+
+        {/* Admin Users Management - Admin only */}
+        <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute allowedRoles={['ADMIN']}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<AdminUsers />} />
         </Route>
       </Routes>
     </BrowserRouter>
