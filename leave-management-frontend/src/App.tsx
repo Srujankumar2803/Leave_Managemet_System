@@ -8,11 +8,12 @@ import Approvals from './pages/Approvals';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Unauthorized from './pages/Unauthorized';
 
 /**
  * Root App component with routing configuration
  * Login and Register routes are standalone (not wrapped by Layout)
- * All dashboard routes are protected and use Layout wrapper
+ * All dashboard routes are protected with role-based access control
  */
 function App() {
   return (
@@ -21,10 +22,22 @@ function App() {
         {/* Auth routes - standalone, no protection needed */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
-        {/* Protected dashboard routes - require authentication */}
+
+        {/* Unauthorized page - within Layout for consistent UI */}
         <Route
-          path="/"
+          path="/unauthorized"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Unauthorized />} />
+        </Route>
+        
+        {/* Dashboard - accessible to all authenticated users */}
+        <Route
+          path="/" 
           element={
             <ProtectedRoute>
               <Layout />
@@ -32,10 +45,53 @@ function App() {
           }
         >
           <Route index element={<Dashboard />} />
-          <Route path="apply-leave" element={<ApplyLeave />} />
-          <Route path="my-leaves" element={<MyLeaves />} />
-          <Route path="approvals" element={<Approvals />} />
-          <Route path="admin" element={<Admin />} />
+        </Route>
+
+        {/* Employee routes - Apply Leave & My Leaves */}
+        <Route
+          path="/apply-leave"
+          element={
+            <ProtectedRoute allowedRoles={['EMPLOYEE']}>  // this is role based entry to the user, the element loaded with the help of this file,in order to go to this route, it is handled by the Sidebar.tsx
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<ApplyLeave />} />
+        </Route>
+
+        <Route
+          path="/my-leaves"
+          element={
+            <ProtectedRoute allowedRoles={['EMPLOYEE']}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<MyLeaves />} />
+        </Route>
+
+        {/* Manager routes - Approvals */}
+        <Route
+          path="/approvals"
+          element={
+            <ProtectedRoute allowedRoles={['MANAGER']}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Approvals />} />
+        </Route>
+
+        {/* Admin routes - Admin panel */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={['ADMIN']}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Admin />} />
         </Route>
       </Routes>
     </BrowserRouter>
