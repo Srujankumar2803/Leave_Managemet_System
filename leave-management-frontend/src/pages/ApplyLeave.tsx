@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router';
 import { applyLeave, mockLeaveTypes } from '../api/leaveService';
 import type { ApplyLeaveRequest } from '../api/leaveService';
