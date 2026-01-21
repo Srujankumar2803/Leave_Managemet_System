@@ -14,10 +14,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Register repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
 
 // Register services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<ILeaveService, LeaveService>();
 
 // Configure JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -66,6 +68,13 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+
+// Seed database
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await DbInitializer.SeedData(context);
+}
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())

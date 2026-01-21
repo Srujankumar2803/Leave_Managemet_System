@@ -63,6 +63,29 @@ function App() {
           <Route index element={<ApplyLeave />} />
         </Route>
 
+        {/* Leave Management Routes */}
+        <Route
+          path="/leaves/apply"
+          element={
+            <ProtectedRoute allowedRoles={['EMPLOYEE']}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<ApplyLeave />} />
+        </Route>
+
+        <Route
+          path="/leaves/my-leaves"
+          element={
+            <ProtectedRoute allowedRoles={['EMPLOYEE']}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<MyLeaves />} />
+        </Route>
+
         <Route
           path="/my-leaves"
           element={

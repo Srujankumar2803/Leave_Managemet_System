@@ -27,7 +27,13 @@ public class ApplicationDbContext : DbContext
     {
     }
     
+    // User management
     public DbSet<User> Users { get; set; }
+    
+    // Leave management
+    public DbSet<LeaveType> LeaveTypes { get; set; }
+    public DbSet<LeaveBalance> LeaveBalances { get; set; }
+    public DbSet<LeaveRequest> LeaveRequests { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
