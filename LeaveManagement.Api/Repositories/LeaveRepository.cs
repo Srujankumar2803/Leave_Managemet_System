@@ -15,6 +15,9 @@ public interface ILeaveRepository
     Task UpdateLeaveBalanceAsync(LeaveBalance leaveBalance);
     Task<List<LeaveRequest>> GetUserLeaveRequestsAsync(int userId);
     Task<LeaveType?> GetLeaveTypeByIdAsync(int leaveTypeId);
+    Task<List<LeaveRequest>> GetPendingLeaveRequestsAsync();
+    Task<LeaveRequest?> GetLeaveRequestByIdAsync(int leaveId);
+    Task UpdateLeaveRequestAsync(LeaveRequest leaveRequest);
 }
 
 /// <summary>
@@ -104,5 +107,38 @@ public class LeaveRepository : ILeaveRepository
     public async Task<LeaveType?> GetLeaveTypeByIdAsync(int leaveTypeId)
     {
         return await _context.LeaveTypes.FindAsync(leaveTypeId);
+    }
+    
+    /// <summary>
+    /// Get all pending leave requests (for manager approval)
+    /// </summary>
+    public async Task<List<LeaveRequest>> GetPendingLeaveRequestsAsync()
+    {
+        return await _context.LeaveRequests
+            .Include(lr => lr.LeaveType)
+            .Include(lr => lr.User)
+            .Where(lr => lr.Status == "PENDING")
+            .OrderBy(lr => lr.AppliedAt)
+            .ToListAsync();
+    }
+    
+    /// <summary>
+    /// Get leave request by ID
+    /// </summary>
+    public async Task<LeaveRequest?> GetLeaveRequestByIdAsync(int leaveId)
+    {
+        return await _context.LeaveRequests
+            .Include(lr => lr.LeaveType)
+            .Include(lr => lr.User)
+            .FirstOrDefaultAsync(lr => lr.Id == leaveId);
+    }
+    
+    /// <summary>
+    /// Update leave request
+    /// </summary>
+    public async Task UpdateLeaveRequestAsync(LeaveRequest leaveRequest)
+    {
+        _context.LeaveRequests.Update(leaveRequest);
+        await _context.SaveChangesAsync();
     }
 }
