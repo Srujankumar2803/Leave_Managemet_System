@@ -7,6 +7,7 @@ import MyLeaves from './pages/MyLeaves';
 import Approvals from './pages/Approvals';
 import Admin from './pages/Admin';
 import AdminUsers from './pages/AdminUsers';
+import AdminLeavePolicies from './pages/AdminLeavePolicies';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Unauthorized from './pages/Unauthorized';
@@ -131,6 +132,18 @@ function App() {
           }
         >
           <Route index element={<AdminUsers />} />
+        </Route>
+
+        {/* Admin Leave Policies Management - Admin only */}
+        <Route
+          path="/admin/leave-policies"
+          element={
+            <ProtectedRoute allowedRoles={['ADMIN']}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<AdminLeavePolicies />} />
         </Route>
       </Routes>
     </BrowserRouter>

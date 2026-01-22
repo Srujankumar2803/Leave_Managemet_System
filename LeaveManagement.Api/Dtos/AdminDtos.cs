@@ -51,3 +51,41 @@ public class ApprovalResponseDto
     public string Status { get; set; } = string.Empty;
     public string Message { get; set; } = string.Empty;
 }
+
+// ========================
+// LEAVE POLICY DTOs
+// ========================
+
+/// <summary>
+/// DTO for leave type response (read operations)
+/// </summary>
+public class LeaveTypeDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public int MaxDaysPerYear { get; set; }
+}
+
+/// <summary>
+/// DTO for creating a new leave type
+/// </summary>
+public class CreateLeaveTypeDto
+{
+    [Required]
+    [MaxLength(100)]
+    public string Name { get; set; } = string.Empty;
+    
+    [Required]
+    [Range(1, 365, ErrorMessage = "MaxDaysPerYear must be between 1 and 365")]
+    public int MaxDaysPerYear { get; set; }
+}
+
+/// <summary>
+/// DTO for updating a leave type (only MaxDaysPerYear can be updated)
+/// </summary>
+public class UpdateLeaveTypeDto
+{
+    [Required]
+    [Range(1, 365, ErrorMessage = "MaxDaysPerYear must be between 1 and 365")]
+    public int MaxDaysPerYear { get; set; }
+}

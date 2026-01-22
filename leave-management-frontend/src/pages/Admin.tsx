@@ -26,18 +26,21 @@ const Admin = () => {
           </p>
         </Link>
 
-        {/* Leave Policies Card - Placeholder */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 opacity-50 cursor-not-allowed">
+        {/* Leave Policies Card */}
+        <Link
+          to="/admin/leave-policies"
+          className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow hover:border-indigo-300"
+        >
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
               <span className="text-2xl">📋</span>
             </div>
             <h2 className="text-lg font-semibold text-gray-900">Leave Policies</h2>
           </div>
           <p className="text-gray-600 text-sm">
-            Configure leave types and policies (Coming soon)
+            Configure leave types and annual limits
           </p>
-        </div>
+        </Link>
 
         {/* System Settings Card - Placeholder */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 opacity-50 cursor-not-allowed">

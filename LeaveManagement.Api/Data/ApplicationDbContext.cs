@@ -48,5 +48,20 @@ public class ApplicationDbContext : DbContext
             // Configure table name
             entity.ToTable("Users"); // maps model to "Users" table
         });
+        
+        // Configure LeaveBalance entity - cascade delete when LeaveType is deleted
+        modelBuilder.Entity<LeaveBalance>(entity =>
+        {
+            entity.HasOne(lb => lb.LeaveType)
+                .WithMany()
+                .HasForeignKey(lb => lb.LeaveTypeId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+        
+        // Configure LeaveType entity - ensure unique name
+        modelBuilder.Entity<LeaveType>(entity =>
+        {
+            entity.HasIndex(lt => lt.Name).IsUnique();
+        });
     }
 }
