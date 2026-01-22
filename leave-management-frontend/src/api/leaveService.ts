@@ -74,6 +74,15 @@ export const getLeaveBalances = async (): Promise<LeaveBalance[]> => {
   return response.data.data;
 };
 
+/**
+ * Get all available leave types
+ * GET /api/leave/types
+ */
+export const getLeaveTypes = async (): Promise<LeaveType[]> => {
+  const response = await axiosInstance.get<{ data: LeaveType[] }>('/leave/types');
+  return response.data.data;
+};
+
 // ========================
 // TEMPORARY MOCK DATA
 // ========================

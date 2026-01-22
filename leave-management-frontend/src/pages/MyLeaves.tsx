@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getMyLeaveRequests } from '../api/leaveService';
-import type { LeaveRequest } from '../api/leaveService';
+import { getMyLeaveRequests, getLeaveBalances } from '../api/leaveService';
+import type { LeaveRequest, LeaveBalance } from '../api/leaveService';
 import axios from 'axios';
 
 /**
@@ -9,12 +9,15 @@ import axios from 'axios';
 const MyLeaves = () => {
   // State
   const [leaves, setLeaves] = useState<LeaveRequest[]>([]);
+  const [balances, setBalances] = useState<LeaveBalance[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingBalances, setIsLoadingBalances] = useState(true);
   const [error, setError] = useState<string>('');
 
-  // Fetch leave requests on mount
+  // Fetch leave requests and balances on mount
   useEffect(() => {
     fetchMyLeaves();
+    fetchBalances();
   }, []);
 
   const fetchMyLeaves = async () => {
@@ -32,6 +35,19 @@ const MyLeaves = () => {
       }
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const fetchBalances = async () => {
+    setIsLoadingBalances(true);
+    
+    try {
+      const data = await getLeaveBalances();
+      setBalances(data);
+    } catch (err) {
+      console.error('Failed to load leave balances:', err);
+    } finally {
+      setIsLoadingBalances(false);
     }
   };
 
@@ -66,8 +82,74 @@ const MyLeaves = () => {
       {/* Page Header */}
       <div className="mb-6">
         <h1 className="text-2xl font-semibold text-gray-900">My Leaves</h1>
-        <p className="text-gray-600 mt-1">View your leave request history</p>
+        <p className="text-gray-600 mt-1">View your leave request history and balances</p>
       </div>
+
+      {/* Leave Balance Cards */}
+      {!isLoadingBalances && balances.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          {balances.map((balance) => (
+            <div 
+              key={balance.leaveTypeId} 
+              className="bg-white rounded-lg shadow-sm border border-gray-200 p-5"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className="text-sm font-medium text-gray-600">
+                    {balance.leaveTypeName}
+                  </h3>
+                  <div className="mt-2 flex items-baseline">
+                    <span className="text-3xl font-bold text-gray-900">
+                      {balance.remainingDays}
+                    </span>
+                    <span className="ml-2 text-sm text-gray-500">
+                      / {balance.maxDaysPerYear} days
+                    </span>
+                  </div>
+                </div>
+                <div className={`mt-1 px-2 py-1 rounded text-xs font-medium ${
+                  balance.remainingDays === 0 
+                    ? 'bg-red-100 text-red-800' 
+                    : balance.remainingDays < balance.maxDaysPerYear * 0.3
+                    ? 'bg-yellow-100 text-yellow-800'
+                    : 'bg-green-100 text-green-800'
+                }`}>
+                  {balance.remainingDays === 0 
+                    ? 'Exhausted' 
+                    : balance.remainingDays < balance.maxDaysPerYear * 0.3
+                    ? 'Low'
+                    : 'Available'
+                  }
+                </div>
+              </div>
+              {/* Progress Bar */}
+              <div className="mt-3">
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className={`h-2 rounded-full transition-all ${
+                      balance.remainingDays === 0 
+                        ? 'bg-red-500' 
+                        : balance.remainingDays < balance.maxDaysPerYear * 0.3
+                        ? 'bg-yellow-500'
+                        : 'bg-green-500'
+                    }`}
+                    style={{ 
+                      width: `${(balance.remainingDays / balance.maxDaysPerYear) * 100}%` 
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Loading Balances */}
+      {isLoadingBalances && (
+        <div className="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+          <p className="text-gray-600 text-sm">Loading leave balances...</p>
+        </div>
+      )}
 
       {/* Content Card */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200">

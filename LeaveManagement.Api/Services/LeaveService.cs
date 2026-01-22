@@ -14,6 +14,7 @@ public interface ILeaveService
     Task<LeaveResponseDto> ApplyLeaveAsync(int userId, ApplyLeaveRequestDto request);
     Task<List<LeaveBalanceDto>> GetUserLeaveBalancesAsync(int userId);
     Task<List<LeaveResponseDto>> GetUserLeaveRequestsAsync(int userId);
+    Task<List<LeaveTypeDto>> GetAllLeaveTypesAsync();
 }
 
 /// <summary>
@@ -132,12 +133,41 @@ public class LeaveService : ILeaveService
     
     /// <summary>
     /// Get user's leave balances for all leave types
+    /// Initializes balances if they don't exist
     /// </summary>
     public async Task<List<LeaveBalanceDto>> GetUserLeaveBalancesAsync(int userId)
     {
-        // This would typically fetch from database
-        // For now, returning empty list - will be implemented when we add balance initialization
-        return new List<LeaveBalanceDto>();
+        // Get all leave types
+        var leaveTypes = await _leaveRepository.GetAllLeaveTypesAsync();
+        
+        // Get existing balances
+        var existingBalances = await _leaveRepository.GetUserLeaveBalancesAsync(userId);
+        
+        // Initialize missing balances
+        foreach (var leaveType in leaveTypes)
+        {
+            if (!existingBalances.Any(b => b.LeaveTypeId == leaveType.Id))
+            {
+                var newBalance = new LeaveBalance
+                {
+                    UserId = userId,
+                    LeaveTypeId = leaveType.Id,
+                    RemainingDays = leaveType.MaxDaysPerYear
+                };
+                
+                await _leaveRepository.CreateLeaveBalanceAsync(newBalance);
+                existingBalances.Add(newBalance);
+            }
+        }
+        
+        // Return DTOs
+        return existingBalances.Select(lb => new LeaveBalanceDto
+        {
+            LeaveTypeId = lb.LeaveTypeId,
+            LeaveTypeName = lb.LeaveType.Name,
+            RemainingDays = lb.RemainingDays,
+            MaxDaysPerYear = lb.LeaveType.MaxDaysPerYear
+        }).ToList();
     }
     
     /// <summary>
@@ -169,5 +199,20 @@ public class LeaveService : ILeaveService
     private int CalculateTotalDays(DateTime startDate, DateTime endDate)
     {
         return (endDate.Date - startDate.Date).Days + 1;
+    }
+    
+    /// <summary>
+    /// Get all available leave types
+    /// </summary>
+    public async Task<List<LeaveTypeDto>> GetAllLeaveTypesAsync()
+    {
+        var leaveTypes = await _leaveRepository.GetAllLeaveTypesAsync();
+        
+        return leaveTypes.Select(lt => new LeaveTypeDto
+        {
+            Id = lt.Id,
+            Name = lt.Name,
+            MaxDaysPerYear = lt.MaxDaysPerYear
+        }).ToList();
     }
 }

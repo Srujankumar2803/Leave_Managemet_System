@@ -48,3 +48,14 @@ public class LeaveBalanceDto
     public int RemainingDays { get; set; }
     public int MaxDaysPerYear { get; set; }
 }
+
+/// <summary>
+/// DTO for leave type response
+/// </summary>
+public class LeaveTypeDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public int MaxDaysPerYear { get; set; }
+}
+

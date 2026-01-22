@@ -106,4 +106,23 @@ public class LeaveController : ControllerBase
             return StatusCode(500, new { message = "An error occurred while fetching leave balances" });
         }
     }
+    
+    /// <summary>
+    /// Get all available leave types
+    /// GET /api/leave/types
+    /// </summary>
+    [HttpGet("types")]
+    public async Task<IActionResult> GetLeaveTypes()
+    {
+        try
+        {
+            var leaveTypes = await _leaveService.GetAllLeaveTypesAsync();
+            
+            return Ok(new { data = leaveTypes });
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, new { message = "An error occurred while fetching leave types" });
+        }
+    }
 }

@@ -1,7 +1,7 @@
-import { useState, type FormEvent } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import { useNavigate } from 'react-router';
-import { applyLeave, mockLeaveTypes } from '../api/leaveService';
-import type { ApplyLeaveRequest } from '../api/leaveService';
+import { applyLeave, getLeaveTypes } from '../api/leaveService';
+import type { ApplyLeaveRequest, LeaveType } from '../api/leaveService';
 import axios from 'axios';
 
 interface FormData {
@@ -36,6 +36,26 @@ const ApplyLeave = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string>('');
   const [successMessage, setSuccessMessage] = useState<string>('');
+  const [leaveTypes, setLeaveTypes] = useState<LeaveType[]>([]);
+  const [isLoadingTypes, setIsLoadingTypes] = useState(true);
+
+  // Fetch leave types on mount
+  useEffect(() => {
+    fetchLeaveTypes();
+  }, []);
+
+  const fetchLeaveTypes = async () => {
+    setIsLoadingTypes(true);
+    try {
+      const types = await getLeaveTypes();
+      setLeaveTypes(types);
+    } catch (error) {
+      console.error('Failed to load leave types:', error);
+      setApiError('Failed to load leave types');
+    } finally {
+      setIsLoadingTypes(false);
+    }
+  };
 
   // Form validation
   const validateForm = (): boolean => {
@@ -149,12 +169,13 @@ const ApplyLeave = () => {
               name="leaveTypeId"
               value={formData.leaveTypeId}
               onChange={handleChange}
+              disabled={isLoadingTypes}
               className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 ${
                 errors.leaveTypeId ? 'border-red-500' : 'border-gray-300'
               }`}
             >
-              <option value="">Select leave type</option>
-              {mockLeaveTypes.map((type) => (
+              <option value="">{isLoadingTypes ? 'Loading...' : 'Select leave type'}</option>
+              {leaveTypes.map((type) => (
                 <option key={type.id} value={type.id}>
                   {type.name} ({type.maxDaysPerYear} days/year)
                 </option>
