@@ -21,6 +21,8 @@ public interface ILeaveRepository
     Task<List<LeaveType>> GetAllLeaveTypesAsync();
     Task<List<LeaveBalance>> GetUserLeaveBalancesAsync(int userId);
     Task CreateLeaveBalanceAsync(LeaveBalance leaveBalance);
+    Task<List<LeaveRequest>> GetAllLeaveRequestsAsync();
+    Task<int> GetTotalLeaveRequestsCountAsync();
 }
 
 /// <summary>
@@ -171,5 +173,25 @@ public class LeaveRepository : ILeaveRepository
     {
         _context.LeaveBalances.Add(leaveBalance);
         await _context.SaveChangesAsync();
+    }
+    
+    /// <summary>
+    /// Get all leave requests (for dashboard summaries)
+    /// </summary>
+    public async Task<List<LeaveRequest>> GetAllLeaveRequestsAsync()
+    {
+        return await _context.LeaveRequests
+            .Include(lr => lr.LeaveType)
+            .Include(lr => lr.User)
+            .OrderByDescending(lr => lr.AppliedAt)
+            .ToListAsync();
+    }
+    
+    /// <summary>
+    /// Get total count of all leave requests (optimized for dashboard)
+    /// </summary>
+    public async Task<int> GetTotalLeaveRequestsCountAsync()
+    {
+        return await _context.LeaveRequests.CountAsync();
     }
 }

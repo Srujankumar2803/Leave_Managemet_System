@@ -23,6 +23,7 @@ builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<ILeaveService, LeaveService>();
 builder.Services.AddScoped<IManagerService, ManagerService>();
 builder.Services.AddScoped<ILeavePolicyService, LeavePolicyService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 // Configure JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");
