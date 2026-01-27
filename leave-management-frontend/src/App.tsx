@@ -8,6 +8,8 @@ import Approvals from './pages/Approvals';
 import Admin from './pages/Admin';
 import AdminUsers from './pages/AdminUsers';
 import AdminLeavePolicies from './pages/AdminLeavePolicies';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Unauthorized from './pages/Unauthorized';
@@ -144,6 +146,30 @@ function App() {
           }
         >
           <Route index element={<AdminLeavePolicies />} />
+        </Route>
+
+        {/* Profile - accessible to all authenticated users */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Profile />} />
+        </Route>
+
+        {/* Settings - accessible to all authenticated users */}
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Settings />} />
         </Route>
       </Routes>
     </BrowserRouter>
