@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 /**
  * Main layout component that wraps all pages
  * Dark sidebar + white navbar + subtle background for content area
+ * Footer stays at bottom of viewport or content, whichever is lower
  */
 const Layout = () => {
   return (
@@ -17,10 +19,16 @@ const Layout = () => {
         {/* Top navbar - clean white */}
         <Navbar />
         
-        {/* Page content - increased padding for breathing room */}
-        <main className="flex-1 overflow-y-auto p-8">
-          <Outlet />
-        </main>
+        {/* Scrollable content wrapper with footer */}
+        <div className="flex-1 overflow-y-auto flex flex-col">
+          {/* Page content - increased padding for breathing room */}
+          <main className="flex-1 p-8">
+            <Outlet />
+          </main>
+          
+          {/* Footer - always at bottom */}
+          <Footer />
+        </div>
       </div>
     </div>
   );

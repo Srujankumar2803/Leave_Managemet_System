@@ -191,11 +191,11 @@ const Approvals = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {leaves.map((leave) => {
+                {leaves.map((leave, index) => {
                   const isProcessing = processingIds.has(leave.id);
                   
                   return (
-                    <tr key={leave.id} className="hover:bg-gray-50 transition-colors">
+                    <tr key={leave.id} className={`hover:bg-gray-100 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                       <td className="px-6 py-4">
                         <div className="text-sm font-medium text-gray-900">
                           {leave.employeeName}

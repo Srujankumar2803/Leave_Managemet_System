@@ -145,7 +145,10 @@ const Dashboard = () => {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Leave Balance</h2>
             {employeeDashboard.remainingLeaveSummary.length === 0 ? (
-              <p className="text-gray-600">No leave balances available</p>
+              <div className="text-center py-6">
+                <p className="text-gray-600">No leave balances available</p>
+                <p className="text-sm text-gray-500 mt-1">Contact HR to set up your leave entitlements</p>
+              </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {employeeDashboard.remainingLeaveSummary.map((balance, index) => (
@@ -175,7 +178,10 @@ const Dashboard = () => {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Leaves</h2>
             {employeeDashboard.recentLeaves.length === 0 ? (
-              <p className="text-gray-600">No recent leaves</p>
+              <div className="text-center py-6">
+                <p className="text-gray-600">No recent leaves</p>
+                <p className="text-sm text-gray-500 mt-1">Your leave history will appear here</p>
+              </div>
             ) : (
               <div className="space-y-3">
                 {employeeDashboard.recentLeaves.map((leave) => (
@@ -249,7 +255,10 @@ const Dashboard = () => {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Decisions</h2>
             {managerDashboard.recentDecisions.length === 0 ? (
-              <p className="text-gray-600">No recent decisions</p>
+              <div className="text-center py-6">
+                <p className="text-gray-600">No recent decisions</p>
+                <p className="text-sm text-gray-500 mt-1">Approved and rejected requests will appear here</p>
+              </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
@@ -270,8 +279,8 @@ const Dashboard = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {managerDashboard.recentDecisions.map((decision) => (
-                      <tr key={decision.leaveId} className="hover:bg-gray-50">
+                    {managerDashboard.recentDecisions.map((decision, index) => (
+                      <tr key={decision.leaveId} className={`hover:bg-gray-100 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                         <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
                           {decision.employeeName}
                         </td>
