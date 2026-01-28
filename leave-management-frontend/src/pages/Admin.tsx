@@ -42,18 +42,21 @@ const Admin = () => {
           </p>
         </Link>
 
-        {/* System Settings Card - Placeholder */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 opacity-50 cursor-not-allowed">
+        {/* System Settings Card */}
+        <Link
+          to="/admin/system-settings"
+          className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow hover:border-indigo-300"
+        >
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
               <span className="text-2xl">⚙️</span>
             </div>
             <h2 className="text-lg font-semibold text-gray-900">System Settings</h2>
           </div>
           <p className="text-gray-600 text-sm">
-            Configure system-wide settings (Coming soon)
+            Configure organization-wide settings
           </p>
-        </div>
+        </Link>
       </div>
     </div>
   );

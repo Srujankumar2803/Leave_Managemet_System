@@ -35,6 +35,9 @@ public class ApplicationDbContext : DbContext
     public DbSet<LeaveBalance> LeaveBalances { get; set; }
     public DbSet<LeaveRequest> LeaveRequests { get; set; }
     
+    // System settings
+    public DbSet<SystemSetting> SystemSettings { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -62,6 +65,13 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<LeaveType>(entity =>
         {
             entity.HasIndex(lt => lt.Name).IsUnique();
+        });
+        
+        // Configure SystemSetting entity - ensure unique key
+        modelBuilder.Entity<SystemSetting>(entity =>
+        {
+            entity.HasIndex(s => s.Key).IsUnique();
+            entity.ToTable("SystemSettings");
         });
     }
 }

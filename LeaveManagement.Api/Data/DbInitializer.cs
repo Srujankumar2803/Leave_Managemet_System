@@ -10,6 +10,9 @@ public static class DbInitializer
 {
     public static async Task SeedData(ApplicationDbContext context)
     {
+        // Seed System Settings first
+        await SeedSystemSettings(context);
+        
         // Check if leave types already exist
         if (await context.LeaveTypes.AnyAsync())
         {
@@ -44,6 +47,41 @@ public static class DbInitializer
             }
         }
 
+        await context.SaveChangesAsync();
+    }
+    
+    /// <summary>
+    /// Seed default system settings if they don't exist
+    /// </summary>
+    private static async Task SeedSystemSettings(ApplicationDbContext context)
+    {
+        // Check if system settings already exist
+        if (await context.SystemSettings.AnyAsync())
+        {
+            return; // Settings already seeded
+        }
+        
+        // Default system settings
+        var defaultSettings = new List<SystemSetting>
+        {
+            new SystemSetting 
+            { 
+                Key = SystemSettingKeys.CompanyName, 
+                Value = "My Company" 
+            },
+            new SystemSetting 
+            { 
+                Key = SystemSettingKeys.LeaveYearStartMonth, 
+                Value = "January" 
+            },
+            new SystemSetting 
+            { 
+                Key = SystemSettingKeys.MaxCarryForwardDays, 
+                Value = "5" 
+            }
+        };
+        
+        await context.SystemSettings.AddRangeAsync(defaultSettings);
         await context.SaveChangesAsync();
     }
 }

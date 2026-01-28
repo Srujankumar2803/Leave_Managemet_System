@@ -42,6 +42,21 @@ export interface UpdateLeaveTypeRequest {
 }
 
 /**
+ * System setting interface
+ */
+export interface SystemSetting {
+  key: string;
+  value: string;
+}
+
+/**
+ * Request interface for updating system settings
+ */
+export interface UpdateSystemSettingsRequest {
+  settings: SystemSetting[];
+}
+
+/**
  * Admin API service
  * Handles admin-only operations (user management)
  */
@@ -108,6 +123,29 @@ export const deleteLeaveType = async (id: number): Promise<void> => {
   await axiosClient.delete(`/admin/leave-types/${id}`);
 };
 
+// ========================
+// SYSTEM SETTINGS API FUNCTIONS
+// ========================
+
+/**
+ * Get all system settings (admin only)
+ * @returns Promise with array of system settings
+ */
+export const getSystemSettings = async (): Promise<SystemSetting[]> => {
+  const response = await axiosClient.get<SystemSetting[]>('/admin/system-settings');
+  return response.data;
+};
+
+/**
+ * Update system settings (admin only)
+ * @param settings - Array of settings to update
+ * @returns Promise with updated settings
+ */
+export const updateSystemSettings = async (settings: SystemSetting[]): Promise<SystemSetting[]> => {
+  const response = await axiosClient.put<SystemSetting[]>('/admin/system-settings', { settings });
+  return response.data;
+};
+
 const adminService = {
   getAllUsers,
   updateUserRole,
@@ -115,6 +153,8 @@ const adminService = {
   createLeaveType,
   updateLeaveType,
   deleteLeaveType,
+  getSystemSettings,
+  updateSystemSettings,
 };
 
 export default adminService;

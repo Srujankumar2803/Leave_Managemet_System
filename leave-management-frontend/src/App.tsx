@@ -8,6 +8,7 @@ import Approvals from './pages/Approvals';
 import Admin from './pages/Admin';
 import AdminUsers from './pages/AdminUsers';
 import AdminLeavePolicies from './pages/AdminLeavePolicies';
+import AdminSystemSettings from './pages/AdminSystemSettings';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
@@ -146,6 +147,18 @@ function App() {
           }
         >
           <Route index element={<AdminLeavePolicies />} />
+        </Route>
+
+        {/* Admin System Settings - Admin only */}
+        <Route
+          path="/admin/system-settings"
+          element={
+            <ProtectedRoute allowedRoles={['ADMIN']}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<AdminSystemSettings />} />
         </Route>
 
         {/* Profile - accessible to all authenticated users */}
